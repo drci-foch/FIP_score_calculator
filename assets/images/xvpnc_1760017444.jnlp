@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.5" codebase="" href="xvpnc_1760017444.jnlp">
+	<information>
+		<title>Stormshield secure access</title>
+		<vendor>Stormshield</vendor>
+		<description>Stormshield Secure Access</description>
+		<homepage href="http://www.stormshield.eu"/>
+		<offline-allowed/>
+	</information>
+	<resources>
+		<j2se version="1.8+"/>
+		<jar href="https://hfoch.hopital-foch.org/data/auth/XvpnClientV2_4_2.jar" main="true" />
+	</resources>
+	<application-desc name="Stormshield secure access" main-class="XvpnClient">
+		<argument>-userid ext_benysar@fo.ch.net</argument>
+		<argument>-userpassword crOKNgCNAJZUELZ0sBaLOBxjV9a0LDl+W1o30RkTOElDrtjl52WespvenDRDO4v38KpB1v3p2Rnzu7Zb9L0O/g==</argument>
+		<argument>-relayhost hfoch.hopital-foch.org</argument>
+		<argument>-relayport 443</argument>
+		<argument>-totalrelay 1</argument>
+		<argument>-servertoredirect_1 P10158</argument>
+		<argument>-localhost_1 127.0.0.1</argument>
+		<argument>-localport_1 11423</argument>
+		<argument>-fingerprint fd482f78d0abc18dd2e4ab7053afeeb8eb5d6af7</argument>
+		<argument>-signature de993fdb37e939cb2394b1a6284d1f31d1f90e1115515e1f46308de166ef87977d98ccd2641f65d9c473b1f0218e2efa47cdda6ab44c89072e32e5eca29d3af78916c683b5f1924dd90b24792098d165337c0fb5052190c0043c29857416ba407bb3fe41269d6e5500f374ad38d77521414867363bcabaa3067be89ca6b5cc6f23bac1185eb0b0eac9150af056e4bbd35f4cf9f912d770b6fe2d91056d1859c295134a0282495cd41ce2fd734f6f9847802225169db76622d2679d9f2dab67454be81ba7d269bd05dfcc1af1b4ae7d24a9b5d86574dc128f68ba0375a4022204f4c66d9fbe2e3f610b536af98235f9f210faa8b7337f4575e0d6294354e4fb6f</argument>
+	</application-desc>
+	<security>
+		<all-permissions />
+	</security>
+      <update check="background" policy="prompt-update"/>
+</jnlp>
