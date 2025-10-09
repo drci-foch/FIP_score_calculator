@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIP-Score Calculator | Hôpital Foch - CEREO</title>
+    <meta name="description" content="Clinical decision support tool for screening FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header with Foch branding -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="assets/images/logo-foch.svg" alt="Hôpital Foch" class="logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>FIP-Score Calculator</h1>
+                    <p class="subtitle">Centre de Référence des Syndromes Hyperéosinophiliques (CEREO)</p>
+                </div>
+            </div>
+            <div class="language-switch">
+                <button onclick="setLanguage('en')" class="lang-btn active" id="btn-en">EN</button>
+                <button onclick="setLanguage('fr')" class="lang-btn" id="btn-fr">FR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro-section">
+            <h2 data-en="Screening for FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome" 
+                data-fr="Dépistage du syndrome hyperéosinophilique associé à FIP1L1::PDGFRA">
+                Screening for FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome
+            </h2>
+            <div class="warning-box">
+                <div class="warning-icon">⚠️</div>
+                <div>
+                    <strong data-en="Clinical Decision Support Tool" data-fr="Outil d'aide à la décision clinique">Clinical Decision Support Tool</strong>
+                    <p data-en="This calculator is intended for healthcare professionals. Always consider the complete clinical picture and use clinical judgment." 
+                       data-fr="Ce calculateur est destiné aux professionnels de santé. Considérez toujours le tableau clinique complet et utilisez votre jugement clinique.">
+                        This calculator is intended for healthcare professionals. Always consider the complete clinical picture and use clinical judgment.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator-section">
+            <div class="section-header">
+                <h3 data-en="Clinical & Biological Parameters" data-fr="Paramètres cliniques et biologiques">
+                    Clinical & Biological Parameters
+                </h3>
+                <p class="section-subtitle" data-en="Select all applicable criteria" data-fr="Sélectionnez tous les critères applicables">
+                    Select all applicable criteria
+                </p>
+            </div>
+
+            <div class="criteria-grid">
+                <div class="criterion-card" onclick="toggleCriterion(this, 'age')">
+                    <input type="checkbox" id="age" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">1</span>
+                            <span class="criterion-points">+9</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Age < 66 years" data-fr="Âge < 66 ans">Age < 66 years</h4>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'sex')">
+                    <input type="checkbox" id="sex" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">2</span>
+                            <span class="criterion-points">+9</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Male sex" data-fr="Sexe masculin">Male sex</h4>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'splenomegaly')">
+                    <input type="checkbox" id="splenomegaly" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">3</span>
+                            <span class="criterion-points">+18</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Splenomegaly" data-fr="Splénomégalie">Splenomegaly</h4>
+                        <p class="criterion-detail" data-en="Palpable and/or radiological" data-fr="Palpable et/ou radiologique">Palpable and/or radiological</p>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'no-gi')">
+                    <input type="checkbox" id="no-gi" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">4</span>
+                            <span class="criterion-points">+11</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="No GI involvement" data-fr="Absence d'atteinte digestive">No GI involvement</h4>
+                        <p class="criterion-detail" data-en="No gastrointestinal manifestations" data-fr="Absence d'atteinte gastro-intestinale">No gastrointestinal manifestations</p>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'papulosis')">
+                    <input type="checkbox" id="papulosis" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">5</span>
+                            <span class="criterion-points">+9</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Lymphomatoid papulosis" data-fr="Papulose lymphomatoïde">Lymphomatoid papulosis</h4>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'b12')">
+                    <input type="checkbox" id="b12" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">6</span>
+                            <span class="criterion-points">+15</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Elevated vitamin B12" data-fr="Vitamine B12 élevée">Elevated vitamin B12</h4>
+                        <p class="criterion-detail">> 1000 ng/L</p>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'tryptase')">
+                    <input type="checkbox" id="tryptase" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">7</span>
+                            <span class="criterion-points">+13</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Elevated tryptase" data-fr="Tryptase élevée">Elevated tryptase</h4>
+                        <p class="criterion-detail">> 11.5 µg/L</p>
+                    </div>
+                </div>
+
+                <div class="criterion-card" onclick="toggleCriterion(this, 'ige')">
+                    <input type="checkbox" id="ige" onchange="calculateScore()">
+                    <div class="criterion-content">
+                        <div class="criterion-header">
+                            <span class="criterion-number">8</span>
+                            <span class="criterion-points">+12</span>
+                        </div>
+                        <h4 class="criterion-title" data-en="Normal IgE levels" data-fr="IgE normales">Normal IgE levels</h4>
+                        <p class="criterion-detail">< 150 kUI/L</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="result-section">
+            <div class="score-card">
+                <div class="score-header">
+                    <h3 data-en="Total Score" data-fr="Score Total">Total Score</h3>
+                    <button class="reset-btn" onclick="resetCalculator()">
+                        <span data-en="Reset" data-fr="Réinitialiser">Reset</span>
+                    </button>
+                </div>
+                <div class="score-display">
+                    <div class="score-value" id="score">0</div>
+                    <div class="score-max" data-en="/ 96 points" data-fr="/ 96 points">/ 96 points</div>
+                </div>
+                <div class="score-bar">
+                    <div class="score-bar-fill" id="score-bar"></div>
+                    <div class="score-threshold">
+                        <span class="threshold-marker">48</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interpretation-card" id="interpretation-card" style="display: none;">
+                <div class="interpretation-icon" id="interpretation-icon">📊</div>
+                <h4 id="interpretation-title"></h4>
+                <p id="interpretation-text"></p>
+            </div>
+
+            <div class="recommendation-card" id="recommendation-card" style="display: none;">
+                <div class="recommendation-header">
+                    <h4 id="recommendation-title"></h4>
+                </div>
+                <div id="recommendation-text"></div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4 data-en="About the FIP-Score" data-fr="À propos du FIP-Score">About the FIP-Score</h4>
+                    <ul>
+                        <li data-en="Validated screening tool for FIP1L1::PDGFRA-associated HES" 
+                            data-fr="Outil de dépistage validé pour le SHE associé à FIP1L1::PDGFRA">
+                            Validated screening tool for FIP1L1::PDGFRA-associated HES
+                        </li>
+                        <li data-en="Cutoff: ≥ 48 points indicates testing recommended" 
+                            data-fr="Seuil : ≥ 48 points indique un test recommandé">
+                            Cutoff: ≥ 48 points indicates testing recommended
+                        </li>
+                        <li data-en="Validation: Sensitivity 85.7%, Specificity 97.0%" 
+                            data-fr="Validation : Sensibilité 85,7%, Spécificité 97,0%">
+                            Validation: Sensitivity 85.7%, Specificity 97.0%
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4 data-en="When to Test" data-fr="Quand tester">When to Test</h4>
+                    <ul>
+                        <li data-en="Unexplained persistent hypereosinophilia" 
+                            data-fr="Hyperéosinophilie persistante inexpliquée">
+                            Unexplained persistent hypereosinophilia
+                        </li>
+                        <li data-en="After excluding secondary causes" 
+                            data-fr="Après exclusion des causes secondaires">
+                            After excluding secondary causes
+                        </li>
+                        <li data-en="Steroid-resistant eosinophilia" 
+                            data-fr="Éosinophilie résistante aux stéroïdes">
+                            Steroid-resistant eosinophilia
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="reference-card">
+                <h4 data-en="Scientific Reference" data-fr="Référence scientifique">Scientific Reference</h4>
+                <p class="reference-text">
+                    <span data-en="Stammler R, Vallée A, Rohmer J, et al. Development and validation of the FIP-Score for the screening of FIP1L1::PDGFRA-associated hypereosinophilic syndrome. Journal of Allergy and Clinical Immunology: In Practice. 2025 (in press)." 
+                          data-fr="Stammler R, Vallée A, Rohmer J, et al. Développement et validation du FIP-Score pour le dépistage du syndrome hyperéosinophilique associé à FIP1L1::PDGFRA. Journal of Allergy and Clinical Immunology: In Practice. 2025 (sous presse).">
+                        Stammler R, Vallée A, Rohmer J, et al. Development and validation of the FIP-Score for the screening of FIP1L1::PDGFRA-associated hypereosinophilic syndrome. <em>Journal of Allergy and Clinical Immunology: In Practice</em>. 2025 (in press).
+                    </span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>Hôpital Foch</h5>
+                <p>40 rue Worth<br>92150 Suresnes<br>France</p>
+            </div>
+            <div class="footer-section">
+                <h5>CEREO</h5>
+                <p data-en="National Reference Center for Hypereosinophilic Syndromes" 
+                   data-fr="Centre de Référence National des Syndromes Hyperéosinophiliques">
+                    National Reference Center for Hypereosinophilic Syndromes
+                </p>
+            </div>
+            <div class="footer-section">
+                <h5 data-en="Contact" data-fr="Contact">Contact</h5>
+                <p>
+                    <a href="https://www.hopital-foch.com" target="_blank">www.hopital-foch.com</a><br>
+                    <a href="mailto:cereo@hopital-foch.com">cereo@hopital-foch.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hôpital Foch - CEREO. <span data-en="All rights reserved." data-fr="Tous droits réservés.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/calculator.js"></script>
+</body>
+</html>
