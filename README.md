@@ -1,8 +1,7 @@
 # FIP-Score Calculator
 
 Clinical decision support tool for screening **FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome (HES)**.
-
-Developed by the **Centre de Référence des Syndromes Hyperéosinophiliques (CEREO)** at **Hôpital Foch**, Suresnes, France.
+Developed by the Data Unit at **Hôpital Foch**, Suresnes, France.
 
 ---
 
@@ -75,60 +74,9 @@ The application uses **Hôpital Foch's** official color palette:
 git clone https://github.com/your-username/fip-score-calculator.git
 cd fip-score-calculator
 ```
-
-### 2. Add the Hôpital Foch Logo
-
-Download the official logo and place it in:
-```
-assets/images/logo-foch.svg
-```
-
-If you only have a PNG version:
-```
-assets/images/logo-foch.png
-```
-
-Then update line 25 in `index.html`:
-```html
-<img src="assets/images/logo-foch.png" alt="Hôpital Foch" class="logo">
-```
-
-### 3. Add a Favicon (Optional)
-
-Place your favicon in:
-```
-assets/images/favicon.ico
-```
-
-Then add this to the `<head>` section of `index.html`:
-```html
-<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-```
-
-### 4. Test Locally
+### 2. Test Locally
 
 Open `index.html` in your browser or use a local server.
-
----
-
-## 📤 Deployment
-
-### GitHub Pages (Recommended)
-
-1. Push your code to GitHub
-2. Go to repository **Settings** → **Pages**
-3. Select branch: `main` or `master`
-4. Select folder: `/ (root)`
-5. Click **Save**
-6. Your site will be available at: `https://your-username.github.io/fip-score-calculator/`
-
-### Other Hosting Options
-
-The application is a static site and can be hosted on:
-- **Netlify**: Drag and drop the folder
-- **Vercel**: Connect GitHub repository
-- **AWS S3**: Upload files to S3 bucket
-- **Hospital Web Server**: Upload files via FTP/SFTP
 
 ---
 
@@ -174,29 +122,6 @@ The application is a static site and can be hosted on:
 
 ---
 
-## 🔧 Customization
-
-### Changing Colors
-
-Edit `assets/css/style.css` and modify the CSS variables:
-
-```css
-:root {
-    --foch-blue: #003d82;
-    --foch-light-blue: #0066cc;
-    --foch-teal: #00a8a8;
-    /* ... */
-}
-```
-
-### Adding Languages
-
-1. Add `data-{lang}` attributes to translatable elements in `index.html`
-2. Add language button in header
-3. Update `setLanguage()` function in `assets/js/calculator.js`
-
----
-
 ## 📚 Scientific Reference
 
 **Stammler R**, Vallée A, Rohmer J, *et al.*  
@@ -217,17 +142,6 @@ Edit `assets/css/style.css` and modify the CSS variables:
 - COHESion Study Group
 - CEREO (Centre de Référence des Syndromes Hyperéosinophiliques)
 - GBMHM (Groupe de Biologistes Moléculaires Hématologues)
-
----
-
-## 📧 Contact
-
-**CEREO - Hôpital Foch**  
-40 rue Worth  
-92150 Suresnes, France
-
-Email: [cereo@hopital-foch.com](mailto:cereo@hopital-foch.com)  
-Website: [www.hopital-foch.com](https://www.hopital-foch.com)
 
 ---
 
