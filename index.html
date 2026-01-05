@@ -13,7 +13,8 @@
     <!-- GoatCounter Analytics - Privacy-friendly, no cookies, GDPR compliant -->
     <script data-goatcounter="https://fip-score.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
-</head>l
+</head>
+<body>
     <!-- Header with Foch branding -->
     <header class="header">
         <div class="header-content">
@@ -39,7 +40,7 @@
     <main class="container">
         <section class="intro-section">
             <h2 data-en="Screening for FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome in the setting of Unexplained Persistent Hypereosinophilia" 
-                data-fr="Dépistage du syndrome hyperéosinophilique associé à FIP1L1::PDGFRA dans le contexte d'une hyperéosinophilie persistante inexpliquée">
+                data-fr="Dépistage du syndrome hyperéosinophilique associé à FIP1L1::PDGFRA en cas d'hyperéosinophilie persistante inexpliquée">
                 Screening for FIP1L1::PDGFRA-associated Hypereosinophilic Syndrome in the setting of Unexplained Persistent Hypereosinophilia
             </h2>
             <div class="warning-box">
@@ -123,7 +124,7 @@
                         <div class="criterion-content">
                             <div class="criterion-header">
                                 <span class="criterion-points">+15</span>
-                                <h4 class="criterion-title" data-en="Elevated vitamin B12" data-fr="Vitamine B12 élevée">Elevated vitamin B12</h4>
+                                <h4 class="criterion-title" data-en="Elevated vitamin B12" data-fr="Augmentation de la vitamine B12">Elevated vitamin B12</h4>
                             </div>
                             <p class="criterion-detail">(> 1000 ng/L)</p>
                         </div>
@@ -134,7 +135,7 @@
                         <div class="criterion-content">
                             <div class="criterion-header">
                                 <span class="criterion-points">+13</span>
-                                <h4 class="criterion-title" data-en="Elevated tryptase" data-fr="Tryptase élevée">Elevated tryptase</h4>
+                                <h4 class="criterion-title" data-en="Elevated tryptase" data-fr="Augmentation de la tryptase">Elevated tryptase</h4>
                             </div>
                             <p class="criterion-detail">(> 11.5 µg/L)</p>
                         </div>
@@ -145,7 +146,7 @@
                         <div class="criterion-content">
                             <div class="criterion-header">
                                 <span class="criterion-points">+12</span>
-                                <h4 class="criterion-title" data-en="Normal IgE levels" data-fr="IgE normales">Normal IgE levels</h4>
+                                <h4 class="criterion-title" data-en="Normal IgE levels" data-fr="Taux normaux d'IgE totaux">Normal IgE levels</h4>
                             </div>
                             <p class="criterion-detail">(< 150 kUI/L)</p>
                         </div>
@@ -189,6 +190,26 @@
             </div>
         </section>
 
+                    <!-- Feedback Call-to-Action Card -->
+            <div class="feedback-card">
+                <div class="feedback-icon">🔬</div>
+                <div class="feedback-content">
+                    <h4 data-en="Did you confirm a FIP1L1::PDGFRA diagnosis?" data-fr="Avez-vous confirmé un diagnostic FIP1L1::PDGFRA ?">Did you confirm a FIP1L1::PDGFRA diagnosis?</h4>
+                    <p data-en="Your feedback is valuable! If you used this calculator and subsequently confirmed a FIP1L1::PDGFRA-positive case, please inform the CEREO team. This helps us validate the FIP-Score performance in real-world settings and improve patient care." 
+                       data-fr="Vos retours sont précieux ! Si vous avez utilisé ce calculateur et confirmé ensuite un cas FIP1L1::PDGFRA positif, merci d'en informer l'équipe du CEREO. Cela nous aide à valider les performances du FIP-Score en conditions réelles et à améliorer la prise en charge des patients.">
+                        Your feedback is valuable! If you used this calculator and subsequently confirmed a FIP1L1::PDGFRA-positive case, please inform the CEREO team. This helps us validate the FIP-Score performance in real-world settings and improve patient care.
+                    </p>
+                    <div class="feedback-contact">
+                        <span class="feedback-label" data-en="Contact us:" data-fr="Contactez-nous :">Contact us:</span>
+                        <button class="copy-email-btn" onclick="copyEmail()" id="copy-email-btn">
+                            <span class="email-text">cereo@hopital-foch.com</span>
+                            <span class="copy-icon">📋</span>
+                            <span class="copy-feedback" id="copy-feedback" data-en="Copied!" data-fr="Copié !">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
         <section class="info-section">
             <div class="info-grid">
                 <div class="info-card">
@@ -198,20 +219,21 @@
                             data-fr="Outil de dépistage validé pour le SHE associé à FIP1L1::PDGFRA">
                             Validated screening tool for FIP1L1::PDGFRA-associated HES
                         </li>
-                        <li data-en="Cutoff: ≥ 48 points indicates testing recommended" 
-                            data-fr="Seuil : ≥ 48 points indique un test recommandé">
-                            Cutoff: ≥ 48 points indicates testing recommended
+                        <li data-en="FIP1L1::PDGFRA testing recommended if score is ≥ 48 points" 
+                            data-fr="Recherche de FIP1L1::PDGFRA recommandée si le score est ≥ 48 points">
+                            FIP1L1::PDGFRA testing recommended if score is ≥ 48 points
                         </li>
                         <li data-en="Validation: Sensitivity 85.7%, Specificity 97.0%" 
                             data-fr="Validation : Sensibilité 85,7%, Spécificité 97,0%">
                             Validation: Sensitivity 85.7%, Specificity 97.0%
                         </li>
                         <li data-en="Using the FIP-Score reduces testing costs by approximately 10-fold" 
-                            data-fr="L'utilisation du FIP-Score réduit les coûts de dépistage d'environ 10 fois">
+                            data-fr="L'utilisation du FIP-Score réduit les coûts d'environ un facteur 10">
                             Using the FIP-Score reduces testing costs by approximately 10-fold
                         </li>
                     </ul>
                 </div>
+
 
                 <div class="info-card">
                     <h4 data-en="Clinical Context" data-fr="Contexte clinique">Clinical Context</h4>
@@ -221,24 +243,23 @@
                             Apply in patients with unexplained persistent hypereosinophilia
                         </li>
                         <li data-en="Can be used before steroid trial" 
-                            data-fr="Peut être utilisé avant un essai de corticoïdes">
+                            data-fr="Peut être utilisé avant la réalisation d'un test aux corticoïdes">
                             Can be used before steroid trial
                         </li>
                         <li data-en="Helps prioritize molecular testing" 
-                            data-fr="Aide à prioriser les tests moléculaires">
+                            data-fr="Aide à prioriser les investigations moléculaires">
                             Helps prioritize molecular testing
                         </li>
                     </ul>
                 </div>
             </div>
 
+
+
             <div class="reference-card">
                 <h4 data-en="Scientific Reference" data-fr="Référence scientifique">Scientific Reference</h4>
                 <p class="reference-text">
-                    <span data-en="Stammler R, Vallée A, Rohmer J, et al. Development and validation of the FIP-Score for the screening of FIP1L1::PDGFRA-associated hypereosinophilic syndrome. Journal of Allergy and Clinical Immunology: In Practice. 2025 (in press)." 
-                          data-fr="Stammler R, Vallée A, Rohmer J, et al. Développement et validation du FIP-Score pour le dépistage du syndrome hyperéosinophilique associé à FIP1L1::PDGFRA. Journal of Allergy and Clinical Immunology: In Practice. 2025 (sous presse).">
-                        Stammler R, Vallée A, Rohmer J, <em>et al.</em> Development and validation of the FIP-Score for the screening of FIP1L1::PDGFRA-associated hypereosinophilic syndrome. <em>Journal of Allergy and Clinical Immunology: In Practice</em>. 2025 (in press).
-                    </span>
+                    Stammler R, Vallée A, Rohmer J, <em>et al.</em> Development and Validation of the FIP Score for the Screening of FIP1L1::PDGFRA-Associated Hypereosinophilic Syndrome. <em>J Allergy Clin Immunol Pract.</em> 2025;13:3066-3076.e2. PMID: 40992688
                 </p>
             </div>
         </section>
@@ -271,5 +292,6 @@
     </footer>
 
     <script src="assets/js/calculator.js"></script>
+    <script src="assets/js/analytics.js"></script>
 </body>
 </html>

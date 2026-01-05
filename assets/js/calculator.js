@@ -68,6 +68,11 @@ function calculateScore() {
     
     // Update interpretation
     updateInterpretation(totalScore);
+    
+    // Track analytics (if analytics module is loaded)
+    if (typeof trackScoreCalculation === 'function') {
+        trackScoreCalculation(totalScore);
+    }
 }
 
 function updateScoreDisplay(score) {
@@ -128,15 +133,15 @@ function updateInterpretation(score) {
             `;
         } else {
             interpretationTitle.textContent = `Score ≥ ${THRESHOLD} : SHE associé à FIP1L1::PDGFRA suspecté`;
-            interpretationText.textContent = `Avec un score de ${score} points, un test du gène de fusion FIP1L1::PDGFRA est recommandé.`;
+            interpretationText.textContent = `Avec un score de ${score} points, la recherche du gène de fusion FIP1L1::PDGFRA est recommandée.`;
             
-            recommendationTitle.innerHTML = '⚠️ Test recommandé';
+            recommendationTitle.innerHTML = '⚠️ Recherche recommandée';
             recommendationText.innerHTML = `
-                <p><strong>Un test du gène de fusion FIP1L1::PDGFRA doit être effectué</strong></p>
+                <p><strong>La recherche du gène de fusion FIP1L1::PDGFRA doit être effectuée</strong></p>
                 <ul>
                     <li>Méthode : RT-PCR ou FISH sur sang périphérique et/ou moelle osseuse</li>
                     <li>Envisager une aspiration médullaire avec caryotype conventionnel</li>
-                    <li>Envisager des tests de panel génétique par séquençage nouvelle génération</li>
+                    <li>Envisager des tests de panel génétique par séquençage de nouvelle génération</li>
                     <li>Rechercher des translocations impliquant ABL1, PDGFRA, PDGFRB ou FGFR1</li>
                 </ul>
                 <p style="margin-top: 16px;"><em>Note : Ce score a une sensibilité de 85,7% et une spécificité de 97,0% pour identifier le SHE associé à F/P.</em></p>
@@ -171,7 +176,7 @@ function updateInterpretation(score) {
             
             recommendationTitle.innerHTML = '✓ Faible probabilité';
             recommendationText.innerHTML = `
-                <p><strong>Le test du gène de fusion FIP1L1::PDGFRA n'est pas justifié à ce stade</strong></p>
+                <p><strong>La recherche du gène de fusion FIP1L1::PDGFRA n'est pas justifiée à ce stade</strong></p>
                 <p>Envisager d'autres causes d'hyperéosinophilie :</p>
                 <ul>
                     <li>Infections parasitaires</li>
@@ -180,7 +185,7 @@ function updateInterpretation(score) {
                     <li>SHE variant lymphocytaire</li>
                     <li>Autres causes secondaires</li>
                 </ul>
-                <p style="margin-top: 16px;"><strong>Note :</strong> Si la suspicion clinique reste élevée ou si le patient présente une résistance aux stéroïdes, des investigations supplémentaires incluant le test F/P peuvent toujours être indiquées selon le jugement clinique.</p>
+                <p style="margin-top: 16px;"><strong>Note :</strong> Si la suspicion clinique reste élevée ou si le patient présente une résistance aux corticoïdes, des investigations supplémentaires incluant la recherche de F/P peuvent toujours être indiquées selon le jugement clinique.</p>
             `;
         }
     }
@@ -272,8 +277,48 @@ function resetCalculator() {
     }
 })();
 
+// ================================
+// Copy Email Function
+// ================================
+
+function copyEmail() {
+    const email = 'cereo@hopital-foch.com';
+    const btn = document.getElementById('copy-email-btn');
+    const feedback = document.getElementById('copy-feedback');
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+        // Show success feedback
+        btn.classList.add('copied');
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+            btn.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.classList.remove('copied');
+            }, 2000);
+        } catch (e) {
+            console.error('Copy failed', e);
+        }
+        document.body.removeChild(textArea);
+    });
+}
+
 // Export functions for global access
 window.calculateScore = calculateScore;
 window.toggleCriterion = toggleCriterion;
 window.setLanguage = setLanguage;
 window.resetCalculator = resetCalculator;
+window.copyEmail = copyEmail;

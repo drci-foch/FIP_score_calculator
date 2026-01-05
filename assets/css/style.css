@@ -610,6 +610,133 @@ section {
     font-size: 1.125rem;
 }
 
+/* ================================
+   Feedback Call-to-Action Card
+   ================================ */
+
+.feedback-card {
+    background: linear-gradient(135deg, #e7f3ff 0%, #d4e9ff 100%);
+    border: 2px solid var(--foch-light-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.feedback-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.feedback-content {
+    flex: 1;
+}
+
+.feedback-content h4 {
+    font-size: 1.125rem;
+    color: var(--foch-blue);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.feedback-content p {
+    color: var(--dark-gray);
+    font-size: 0.938rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.feedback-contact {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.feedback-label {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+    font-weight: 600;
+}
+
+.copy-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 2px solid var(--foch-blue);
+    color: var(--foch-blue);
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.938rem;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.copy-email-btn:hover {
+    background: var(--foch-blue);
+    color: var(--white);
+}
+
+.copy-email-btn:hover .copy-icon {
+    opacity: 1;
+}
+
+.copy-icon {
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.copy-feedback {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--success);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.copy-feedback::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--success);
+}
+
+.copy-email-btn.copied {
+    background: var(--success);
+    border-color: var(--success);
+    color: var(--white);
+}
+
+.copy-email-btn.copied .copy-feedback {
+    opacity: 1;
+    visibility: visible;
+    top: -35px;
+}
+
+/* ================================
+   Reference Card
+   ================================ */
+
 .reference-card {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: var(--radius-lg);
@@ -786,6 +913,15 @@ section {
     .criterion-detail {
         margin-left: 0;
     }
+    
+    .feedback-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feedback-icon {
+        align-self: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -811,7 +947,8 @@ section {
     .header,
     .footer,
     .language-switch,
-    .reset-btn {
+    .reset-btn,
+    .feedback-card {
         display: none;
     }
     
